@@ -1,5 +1,9 @@
-setTimeout(function(){
-  var testmode = jQuery("#testmode").val();
+
+function everyTime() {
+    if(document.getElementById('form-container')==null){
+    //console.log('each 1 second...');
+    }else{
+        var testmode = jQuery("#testmode").val();
  //alert(publishable_key);
 if (testmode == true) {
 
@@ -139,11 +143,19 @@ form.addEventListener('submit', function(event) {
 
   });
 });
+        clearInterval(myInterval);
+    }
+}
+
+var myInterval = setInterval(everyTime, 1000);
+
+//setTimeout(function(){
+  
 
 
 
 
- },3000);
+// },15000);
 //var token = false;
  // setTimeout(function(){
  // jQuery( "#place_order" ).click(function( event ) {

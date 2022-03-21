@@ -1,26 +1,30 @@
 jQuery(document).ready(function(){
-    var publishable_key = jQuery("#publishable_key").val();
+    var live_public_key = jQuery("#live_public_key").val();
+  var testmode = jQuery("#testmode").val();
+    //alert(jQuery("#hashstring").val());
+if (testmode == true) {
+
+          var active_pk = jQuery("#test_public_key").val();
+        }
+ else{
+   var active_pk = jQuery("#publishable_key").val();
+     }
     var tmode = jQuery("#payment_mode").val();
     var amount = jQuery("#amount").val();
     var save_card = jQuery("#save_card").val();
-    var order_des = jQuery("#order_des").val();
-    var ServerNotificationUrl = jQuery("#ServerNotificationUrl").val();
-   // var Hashstring = jQuery("#hashstring").val();
-    //alert(ServerNotificationUrl);
+    
     if( save_card == 'no') {
         save_card_val = false;
     }
     else {
         save_card_val = true;
     }
-
   var currency = jQuery("#currency").val();
     var billing_first_name = jQuery("#billing_first_name").val();
     var customer_user_id = jQuery("#customer_user_id").val();
     var billing_last_name = jQuery("#billing_last_name").val();
     var billing_email = jQuery("#billing_email").val();
     var billing_phone = jQuery("#billing_phone").val();
-
     var items_values = [];
     jQuery('input[class$="items_bulk"]').each(function() {
         items_values.push({
@@ -36,7 +40,6 @@ jQuery(document).ready(function(){
             'total_amount': jQuery(this).attr('data-product-total-amount')
         });
     });
-    
     if (tmode  == 'authorize') {
         var transaction_mode = {
             mode: 'authorize',
@@ -50,16 +53,17 @@ jQuery(document).ready(function(){
             description: "description",
             statement_descriptor:"statement_descriptor",
             reference:{
-              transaction: "txn_0001",
+              transaction: '',
               order: jQuery("#order_id").val()
             },
+            hashstring:jQuery("#hashstring").val(),
             metadata:{},
             receipt:{
               email: false,
               sms: true
             },
             redirect: jQuery('#tap_end_url').val(),
-            post: null
+            post: jQuery('#post_url').val()
             }
         }
     }
@@ -69,25 +73,26 @@ jQuery(document).ready(function(){
                     charge:{
                         saveCard: false,
                         threeDSecure: true,
-                        description: order_des,
+                        description: "Test Description",
                         statement_descriptor: "Sample",
                     reference:{
-                        transaction: "txn_0001",
+                        transaction: '',
                         order: jQuery("#order_id").val()
                     },
+                    hashstring:jQuery("#hashstring").val(),
                     metadata:{},
                     receipt:{
                         email: false,
                         sms: true
                         },
                     redirect: jQuery('#tap_end_url').val(),
-                    post: ServerNotificationUrl
+                    post: jQuery('#post_url').val()
                 }
             }
         }
     var config = {
         gateway:{
-            publicKey:publishable_key,
+            publicKey:active_pk,
             language:"en",
             contactInfo:true,
             supportedCurrencies:"all",
@@ -97,7 +102,7 @@ jQuery(document).ready(function(){
             notifications:'standard',
             callback: (response) => {
                       console.log("response", response);
-                                    },
+                            },
             labels:{
                 cardNumber:"Card Number",
                 expirationDate:"MM/YY",
@@ -130,7 +135,7 @@ jQuery(document).ready(function(){
             last_name: billing_last_name,
             email: billing_email,
                 phone: {
-                    country_code: '',
+                    country_code: "965",
                     number: billing_phone
                 }
         },
@@ -145,7 +150,7 @@ jQuery(document).ready(function(){
 
 }
     console.log(config);
-if ( publishable_key ) {
+if ( active_pk ) {
         goSell.config(config);
     }
 
