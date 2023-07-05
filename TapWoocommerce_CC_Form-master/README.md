@@ -26,7 +26,7 @@
 3. Upload zip file
  ![upload_zip](https://github.com/Tap-Payments/Plugin-Woocommerce/assets/36191420/35978f65-9cdd-40f8-93e8-4bd2b3703eb3)
 4. WooCommerece Settings
-![WooCommerece setting screenshot 03](https://content.screencast.com/users/m.khan3005/folders/Capture/media/3790a489-9381-4697-bfb1-dad50cab309b/LWR_Recording.png)
+![keys](https://github.com/Tap-Payments/Plugin-Woocommerce/assets/36191420/33c7f3be-c3f2-4181-8d67-d472ebc2362b)
 5. Enter API Keys and other settings
  ![Enter API keys and other settings screenshot 04](https://content.screencast.com/users/m.khan3005/folders/Capture/media/ac62e946-2790-41ab-8a7d-74ed402ef012/LWR_Recording.png)
 
