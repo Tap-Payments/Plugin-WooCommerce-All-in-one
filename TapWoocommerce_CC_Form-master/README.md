@@ -24,7 +24,7 @@
 2. Add New Plugin
  ![Add_new_plugin](https://github.com/Tap-Payments/woocomerce-plugin/assets/36191420/d6c6efb6-58ee-428c-9bb3-8b0903451c33)
 3. Upload zip file
- ![Upload zip file screenshot 02](https://content.screencast.com/users/m.khan3005/folders/Capture/media/fb0f8b1e-3ea2-4563-a79d-1a39fc451acc/LWR_Recording.png)
+ ![upload_zip](https://github.com/Tap-Payments/Plugin-Woocommerce/assets/36191420/35978f65-9cdd-40f8-93e8-4bd2b3703eb3)
 4. WooCommerece Settings
 ![WooCommerece setting screenshot 03](https://content.screencast.com/users/m.khan3005/folders/Capture/media/3790a489-9381-4697-bfb1-dad50cab309b/LWR_Recording.png)
 5. Enter API Keys and other settings
