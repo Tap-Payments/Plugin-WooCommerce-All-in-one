@@ -28,7 +28,7 @@
 4. WooCommerece Settings
 ![keys](https://github.com/Tap-Payments/Plugin-Woocommerce/assets/36191420/33c7f3be-c3f2-4181-8d67-d472ebc2362b)
 5. Enter API Keys and other settings
- ![sk_pk](https://github.com/Tap-Payments/Plugin-Woocommerce/assets/36191420/c5afde27-072a-4e30-9dfd-739adfbc7d54)
+![popup_redirect](https://github.com/Tap-Payments/Plugin-WooCommerce/assets/36191420/b6cc4f23-0d13-4bbf-94f2-9fbd99ab4ffa)
 
  # Frequently Asked Questions
 
