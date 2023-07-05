@@ -22,7 +22,7 @@
 1. Download the plugin zip file. :
 	
 2. Add New Plugin
- ![Add new plugin screenshot 01](https://content.screencast.com/users/m.khan3005/folders/Capture/media/c636b06e-8453-4032-99d6-2d3969d5f84d/LWR_Recording.png)
+ ![Add_new_plugin](https://github.com/Tap-Payments/woocomerce-plugin/assets/36191420/d6c6efb6-58ee-428c-9bb3-8b0903451c33)
 3. Upload zip file
  ![Upload zip file screenshot 02](https://content.screencast.com/users/m.khan3005/folders/Capture/media/fb0f8b1e-3ea2-4563-a79d-1a39fc451acc/LWR_Recording.png)
 4. WooCommerece Settings
