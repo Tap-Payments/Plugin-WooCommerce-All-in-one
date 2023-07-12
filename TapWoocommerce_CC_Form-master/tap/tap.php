@@ -212,7 +212,7 @@ function tap_init_gateway_class() {
 
 			//$this->save_card = $this->get_option('save_card');
 
-	        add_action( 'woocommerce_order_actions', array( $this, 'add_order_meta_box_actions' ) );
+	        //add_action( 'woocommerce_order_actions', array( $this, 'add_order_meta_box_actions' ) );
 
 			add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 
@@ -220,7 +220,7 @@ function tap_init_gateway_class() {
 
 			//add_action('transition_post_status', array($this, 'pending_to_complete'), 10, 3);
 
-			add_action( 'woocommerce_order_actions', array( $this, 'add_order_meta_box_actions' ) );
+			//add_action( 'woocommerce_order_actions', array( $this, 'add_order_meta_box_actions' ) );
 
 			add_action( 'woocommerce_order_status_completed', array($this, 'update_order_status'), 10, 1);
 
@@ -228,12 +228,34 @@ function tap_init_gateway_class() {
 			add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
 			add_action( 'woocommerce_thankyou_tap', array( $this, 'tap_thank_you_page' ) );
 			add_action( 'woocommerce_receipt_tap', array( $this, 'tap_checkout_receipt_page' ) );
+			add_action( 'woocommerce_api_tap_webhook', array( $this, 'webhook' ) );
 			//add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		}
 
         // Set Here the WooCommerce icon for your action button
 
-
+public function webhook($order_id) {
+		         $data = json_decode(file_get_contents("php://input"), true);
+		         $headers = apache_request_headers();
+		         $header = getallheaders();
+		         //var_dump($headers);exit;
+		         $orderid = $data['reference']['order'];
+		         $status = $data['status'];
+		         $charge_id = $data['id'];
+		         if ($status == 'CAPTURED') {
+		            $order = wc_get_order($orderid);
+			         $order->payment_complete();
+			         $order->add_order_note(sanitize_text_field('Tap payment successful..').("<br>").('ID').(':'). ($charge_id.("<br>").('Payment Type :') . ($data['source']['payment_method']).("<br>").('Payment Ref:'). ($data['reference']['payment'])));
+			         $order->reduce_order_stock();
+			         update_option('webhook_debug', $_GET);
+		         }
+		         if ($status == 'DECLINED') {
+		               $order = wc_get_order($orderid);
+		               $order->update_status('pending');
+			           $order->add_order_note(sanitize_text_field('Tap payment failed..').("<br>").('ID').(':'). ($charge_id.("<br>").('Payment Type :') . ($data['source']['payment_method']).("<br>").('Payment Ref:'). ($data['reference']['payment'])));
+			           //update_option('webhook_debug', $_GET);
+		         }
+			}
 
 public function tap_thank_you_page($order_id) {
  			global $woocommerce;
@@ -438,15 +460,10 @@ public function tap_checkout_receipt_page($order_id) {
                    ));
                 $response = curl_exec($curl);
 				$response = json_decode($response);
-				//echo '<pre>';print_r($response);exit;
-				if ( $this->testmode ){
-                $url=$response->transaction->url;
+			
+        $url=$response->transaction->url;
 				wp_redirect($url);
-			}
-                else{
-				$url=$response->redirect->url;
-				wp_redirect($url);
-             }
+				exit;
  		}
 		public function init_form_fields(){
 
