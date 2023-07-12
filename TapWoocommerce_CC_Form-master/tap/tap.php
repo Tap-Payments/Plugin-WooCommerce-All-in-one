@@ -460,15 +460,10 @@ public function tap_checkout_receipt_page($order_id) {
                    ));
                 $response = curl_exec($curl);
 				$response = json_decode($response);
-				//echo '<pre>';print_r($response);exit;
-				if ( $this->testmode ){
-                $url=$response->transaction->url;
+			
+        $url=$response->transaction->url;
 				wp_redirect($url);
-			}
-                else{
-				$url=$response->redirect->url;
-				wp_redirect($url);
-             }
+				exit;
  		}
 		public function init_form_fields(){
 
