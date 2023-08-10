@@ -220,9 +220,7 @@ function tap_init_gateway_class() {
 
 					if ($err) {
 						echo "cURL Error #:" . $err;
-					} else {
-						echo $response->code;
-					}
+					} 
  				}
  				if ($response->status !== 'CAPTURED' && $response->post->status == 'SUCCESS'){
  				    	$items = $order->get_items();
@@ -334,7 +332,7 @@ function tap_init_gateway_class() {
  			         $product_total_amount =number_format((float)$product_total_amount, 3, '.', '');
 
 			
- 			        echo '<input type="hidden" name="items_bulk[]" data-name="'.$item['data']->name.'" data-quantity="'.$item['quantity'].'" data-sale-price="'.$unit_price.'" data-item-product-id="'.$item['product_id'].'" data-product-total-amount="'.$product_total_amount.'" class="items_bulk">';
+ 			        echo '<input type="hidden" name="items_bulk[]" data-name="'.$product->get_name().'" data-quantity="'.$item['quantity'].'" data-sale-price="'.$unit_price.'" data-item-product-id="'.$item['product_id'].'" data-product-total-amount="'.$product_total_amount.'" class="items_bulk">';
 
                     //echo '<input type="hidden" id="price" value="' . $price . '" />';
  			//echo '<pre>';var_dump($price);exit;
