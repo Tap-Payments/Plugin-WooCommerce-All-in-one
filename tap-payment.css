@@ -1,0 +1,26 @@
+/*.gosell-gateway-list-container {
+	border:1px solid red !important;
+}
+#gosell-gateway-side-menu > .gosell-gateway-row >img{
+	border:1px solid red !important;
+}
+.gosell-gateway-row > img {
+	border:1px solid red !important;
+	padding:0px !important;
+}
+
+.gosell-gateway-row-icon > img {
+	padding: 0 !important;
+	margin-top: 3px !important;
+	margin-left:20px !important;
+
+}*/
+/**{
+  box-sizing: unset !important;
+  -webkit-box-sizing: unset !important;
+  -moz-box-sizing: unset !important;
+  box-sizing: unset !important;
+}*/
+.wc_payment_method>label:first-of-type img{
+	float: revert;
+}
